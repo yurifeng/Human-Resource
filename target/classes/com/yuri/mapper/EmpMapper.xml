@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuri.mapper.EmpMapper">
+
+	<!-- 添加员工 -->
+	<insert id="insert" parameterType="emp">
+		insert into yuri_emp
+		values(hr_tblemp_empid.nextval,#{ename},#{egendar},#{depid},#{empdate})
+	</insert>
+
+	<!-- 删除员工 -->
+	<delete id="delete" parameterType="int">
+		delete yuri_emp where
+		empid=#{empid}
+	</delete>
+
+	<!-- 修改员工 -->
+	<update id="update" parameterType="emp">
+		update yuri_emp set
+		ename=#{ename},egendar=#{egendar},depid=#{depid},empdate=#{empdate}
+		where empid=#{empid}
+	</update>
+
+	<!-- 根据员工编号查找员工 -->
+	<select id="select" parameterType="int" resultType="emp">
+		select * from
+		yuri_emp where empid=#{empid}
+	</select>
+
+	<!-- 查询所有员工 -->
+	<select id="selectall" resultType="emp">
+		select * from yuri_emp
+	</select>
+
+</mapper>
